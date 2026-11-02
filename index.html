@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bravofly — Cheap flights, hotels and holidays</title>
+  <meta name="description" content="Bravofly demo environment — synthetic flight booking site for an Amplitude demonstration.">
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- Amplitude Analytics + Session Replay + Guides & Surveys (load synchronously, in this order) -->
+  <script src="https://cdn.amplitude.com/script/f1a6d911a327ff37fca25bfc918ecdc1.js"></script>
+  <script src="https://cdn.amplitude.com/script/f1a6d911a327ff37fca25bfc918ecdc1.engagement.js"></script>
+  <script>
+    (function () {
+      try {
+        if (!window.amplitude) { return; }
+        if (window.sessionReplay && window.sessionReplay.plugin) {
+          window.amplitude.add(window.sessionReplay.plugin({ sampleRate: 1 }));
+        }
+        if (window.engagement && window.engagement.plugin) {
+          window.amplitude.add(window.engagement.plugin());
+        }
+        window.amplitude.init("f1a6d911a327ff37fca25bfc918ecdc1", {
+          appVersion: "2.15.3",
+          fetchRemoteConfig: true,
+          autocapture: {
+            attribution: true,
+            fileDownloads: true,
+            formInteractions: true,
+            pageViews: true,
+            sessions: true,
+            elementInteractions: true,
+            networkTracking: true,
+            webVitals: true,
+            frustrationInteractions: true
+          }
+        });
+      } catch (e) {
+        console.warn("Amplitude failed to initialise", e);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#/" aria-label="Bravofly home">Bravo<span>fly</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#/" class="nav__link nav__link--active">Flights</a>
+        <a href="#/" class="nav__link">Hotels</a>
+        <a href="#/" class="nav__link">Flight + Hotel</a>
+        <a href="#/" class="nav__link">My bookings</a>
+        <a href="#/" class="nav__link">Help</a>
+      </nav>
+      <div class="topbar__meta">
+        <span class="pill">GBP £</span>
+        <span class="pill pill--ghost">EN</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="container app" aria-live="polite"></main>
+
+  <div id="drawer-root"></div>
+  <div id="toast" class="toast" hidden></div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© Bravofly demo environment — synthetic data for an Amplitude demonstration</p>
+      <p class="footer__links"><a href="#/">Terms</a> · <a href="#/">Privacy</a> · <a href="#/">Cookies</a> · <a href="#/">Contact us</a></p>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
