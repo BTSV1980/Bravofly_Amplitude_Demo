@@ -383,7 +383,7 @@
       window.scrollTo(0, 0);
     }));
 
-    $("#view-fees").addEventListener("click", openFeeDrawer);
+    $("#view-fees").addEventListener("click", () => openFeeDrawer(false));
     $("#to-checkout").addEventListener("click", () => navigate("#/checkout"));
     updateSticky();
   }
